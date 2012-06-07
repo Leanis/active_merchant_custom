@@ -23,12 +23,12 @@ module ActiveMerchant #:nodoc:
 
         # The requery URL upon returning from iPay88
         def self.service_url
-          "https://www.mobile88.com/epayment/enquiry.asp"
+          "https://www.mobile88.com/epayment/entry.asp"
         end
 
         # The URL to POST your payment form to
         def self.entry_url
-          "https://www.mobile88.com/epayment/entry.asp"
+          "https://www.mobile88.com/epayment/enquiry.asp"
         end
 
         def self.return(query_string)
