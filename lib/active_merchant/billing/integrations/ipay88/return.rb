@@ -84,7 +84,7 @@ module ActiveMerchant #:nodoc:
 
           # Was the transaction successful?
           def success?
-            self.secure? && self.requery == "00" && self.status == "1"
+            self.secure? && self.status == "1"
           end
 
           protected
