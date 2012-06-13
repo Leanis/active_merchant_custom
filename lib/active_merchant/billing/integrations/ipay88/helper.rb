@@ -40,7 +40,7 @@ module ActiveMerchant #:nodoc:
 
           def initialize(order, account, options = {})
             requires!(options, :amount, :currency)
-            @amount_in_cents = options[:amount].to_i * 100
+            @amount_in_cents = options[:amount].cents
             super
             add_field mappings[:signature], signature
           end
