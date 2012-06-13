@@ -50,7 +50,7 @@ module ActiveMerchant #:nodoc:
             if money.is_a?(String) or cents.to_i < 0
               raise ArgumentError, "money amount must be either a Money object or a positive integer in cents."
             end
-            add_field mappings[:amount], cents
+            add_field mappings[:amount], sprintf("%.2f", cents.to_f/100)
           end
 
           def currency(symbol)
