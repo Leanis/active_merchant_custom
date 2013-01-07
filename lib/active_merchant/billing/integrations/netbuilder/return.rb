@@ -48,6 +48,10 @@ module ActiveMerchant #:nodoc:
             params['domain'].to_s
           end
 
+          def error
+            params['error_desc'].to_s
+          end
+
           def secure?
             self.skey.to_s == self.generated_signature.to_s
           end
