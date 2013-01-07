@@ -57,7 +57,7 @@ module ActiveMerchant #:nodoc:
           end
 
           def generated_signature
-            key0 = Digest::MD5.hexdigest("#{self.tranID}#{self.orderid}#{self.status}#{self.merchant_code}#{self.amount}#{self.cur}")
+            key0 = Digest::MD5.hexdigest("#{self.tranID}#{self.order}#{self.status}#{self.merchant_code}#{self.amount}#{self.cur}")
             str = "#{self.paydate}#{self.merchant_code}#{key0}#{self.appcode}#{self.merchant_key}"
             Digest::MD5.hexdigest(str)
           end
