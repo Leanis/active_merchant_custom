@@ -6,6 +6,7 @@ module ActiveMerchant #:nodoc:
       module Ipay88
         class Return < ActiveMerchant::Billing::Integrations::Return
           include ActiveMerchant::PostsData
+          attr_accessor :merchant_code, :merchant_key
 
           # Merchant Code assigned by iPay88
           def account
