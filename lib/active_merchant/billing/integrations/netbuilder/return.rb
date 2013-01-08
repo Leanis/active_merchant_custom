@@ -1,4 +1,3 @@
-require 'net/http'
 require "digest/sha1"
 
 module ActiveMerchant #:nodoc:
@@ -6,7 +5,10 @@ module ActiveMerchant #:nodoc:
     module Integrations #:nodoc:
       module Netbuilder
         class Return < ActiveMerchant::Billing::Integrations::Return
-          attr_accessor :merchant_code, :merchant_key
+
+          def callback?
+            params['nbcb'].present? && params['nbcb'].to_s == '1'
+          end
 
           def order
             params['orderid'].to_s
@@ -61,8 +63,8 @@ module ActiveMerchant #:nodoc:
           end
 
           def generated_signature
-            key0 = Digest::MD5.hexdigest("#{self.tranID}#{self.order}#{self.status}#{self.merchant_code}#{self.amount}#{self.cur}")
-            str = "#{self.paydate}#{self.merchant_code}#{key0}#{self.appcode}#{self.merchant_key}"
+            key0 = Digest::MD5.hexdigest("#{self.tranID}#{self.order}#{self.status}#{self.domain}#{self.amount}#{self.cur}")
+            str = "#{self.paydate}#{self.domain}#{key0}#{self.appcode}#{Netbuilder.merchant_key}"
             Digest::MD5.hexdigest(str)
           end
 
