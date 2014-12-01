@@ -10,7 +10,7 @@ module ActiveMerchant #:nodoc:
         mattr_accessor :merchant_key
 
         def self.service_url
-          "https://www.onlinepayment.com.my/NBepay/pay/#{merchant_code}/"
+          "https://www.onlinepayment.com.my/MOLPay/pay/#{merchant_code}/"
         end
 
         def self.return(post, options = {})
